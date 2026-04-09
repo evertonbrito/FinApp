@@ -27,6 +27,35 @@
   });
 })();
 
+// About section — scroll-driven word reveal
+(function () {
+  var section = document.querySelector('.about');
+  if (!section) return;
+  var words = section.querySelectorAll('.w');
+  if (!words.length) return;
+
+  function update() {
+    var rect = section.getBoundingClientRect();
+    var scrollable = rect.height - window.innerHeight;
+    // progress 0 → 1 as we scroll through the sticky section
+    var progress = Math.max(0, Math.min(1, -rect.top / scrollable));
+
+    words.forEach(function (word, i) {
+      // stagger: word i lights up when progress crosses its threshold
+      // add a small lead so the first word lights up before 0
+      var threshold = i / (words.length - 1) * 0.88;
+      if (progress >= threshold) {
+        word.classList.add('lit');
+      } else {
+        word.classList.remove('lit');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
 // Scroll-reveal: fade-up elements on scroll
 (function () {
   var els = document.querySelectorAll(
