@@ -1,0 +1,150 @@
+/* ═══════════════════════════════════════════════════════════
+   FinApp — Shimmer Button
+   Baseado em: magicui.design/docs/components/shimmer-button
+   ═══════════════════════════════════════════════════════════
+
+   Variantes:
+     .shimmer-btn--primary    fundo roxo  (#432DD7)  shimmer branco
+     .shimmer-btn--secondary  fundo glass             shimmer branco suave
+     .shimmer-btn--tertiary   transparente, outline   shimmer roxo
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Keyframes ────────────────────────────────────────────── */
+@keyframes sb-spin-around {
+  0%        { transform: translateZ(0) rotate(0deg);   }
+  15%, 35%  { transform: translateZ(0) rotate(90deg);  }
+  65%, 85%  { transform: translateZ(0) rotate(270deg); }
+  100%      { transform: translateZ(0) rotate(360deg); }
+}
+
+@keyframes sb-shimmer-slide {
+  to { transform: translate(calc(100cqw - 100%), 0); }
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+.shimmer-btn {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* garante que o conteúdo original fica por cima das camadas */
+  isolation: isolate;
+  transform: translateZ(0);
+  transition: transform 300ms ease-in-out;
+}
+
+.shimmer-btn:active {
+  transform: translateY(1px);
+}
+
+/* ── Spark container ──────────────────────────────────────── */
+.shimmer-btn__spark {
+  position: absolute;
+  inset: 0;
+  z-index: -30;
+  filter: blur(2px);
+  overflow: visible;
+  container-type: size; /* habilita cqh / cqw */
+}
+
+/* ── Spark inner ──────────────────────────────────────────── */
+.shimmer-btn__spark-inner {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: 1;
+  height: 100cqh;
+  border-radius: 0;
+  mask: none;
+  animation: sb-shimmer-slide var(--sb-speed, 3s) ease-in-out infinite alternate;
+}
+
+/* ── Conic gradient girando ───────────────────────────────── */
+.shimmer-btn__spark-conic {
+  position: absolute;
+  inset: -100%;
+  width: auto;
+  transform: rotate(0deg) translateZ(0);
+  animation: sb-spin-around calc(var(--sb-speed, 3s) * 2) infinite linear;
+  background: conic-gradient(
+    from calc(270deg - (var(--sb-spread, 90deg) * 0.5)),
+    transparent 0deg,
+    var(--sb-shimmer-color, #fff) var(--sb-spread, 90deg),
+    transparent var(--sb-spread, 90deg)
+  );
+}
+
+/* ── Highlight (brilho interno) ───────────────────────────── */
+.shimmer-btn__highlight {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  box-shadow: inset 0 -8px 10px rgba(255, 255, 255, 0.12);
+  transition: box-shadow 300ms ease-in-out;
+  pointer-events: none;
+}
+
+.shimmer-btn:hover .shimmer-btn__highlight {
+  box-shadow: inset 0 -6px 10px rgba(255, 255, 255, 0.22);
+}
+
+.shimmer-btn:active .shimmer-btn__highlight {
+  box-shadow: inset 0 -10px 10px rgba(255, 255, 255, 0.22);
+}
+
+/* ── Backdrop (cobre o conic dentro da borda) ─────────────── */
+.shimmer-btn__backdrop {
+  position: absolute;
+  inset: var(--sb-cut, 1px);
+  z-index: -20;
+  border-radius: inherit;
+  background: var(--sb-bg, #432dd7);
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════════════
+   VARIANTE: PRIMARY  — roxo sólido + shimmer branco
+══════════════════════════════════════════════════════════ */
+.shimmer-btn--primary {
+  --sb-bg:             #432DD7;
+  --sb-shimmer-color:  rgba(255, 255, 255, 0.85);
+  --sb-spread:         90deg;
+  --sb-speed:          3s;
+  --sb-cut:            0px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ══════════════════════════════════════════════════════════
+   VARIANTE: SECONDARY — fundo glass escuro + shimmer branco suave
+══════════════════════════════════════════════════════════ */
+.shimmer-btn--secondary {
+  --sb-bg:             rgba(30, 30, 40, 0.85);
+  --sb-shimmer-color:  rgba(255, 255, 255, 0.5);
+  --sb-spread:         70deg;
+  --sb-speed:          4s;
+  --sb-cut:            1px;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ══════════════════════════════════════════════════════════
+   VARIANTE: TERTIARY — outline transparente + shimmer roxo
+══════════════════════════════════════════════════════════ */
+.shimmer-btn--tertiary {
+  --sb-bg:             rgba(0, 0, 0, 0);
+  --sb-shimmer-color:  rgba(124, 92, 252, 0.7);
+  --sb-spread:         60deg;
+  --sb-speed:          5s;
+  --sb-cut:            1.5px;
+  border: 1.5px solid rgba(124, 92, 252, 0.4) !important;
+}
+
+.shimmer-btn--tertiary .shimmer-btn__highlight {
+  box-shadow: inset 0 -8px 10px rgba(124, 92, 252, 0.08);
+}
+
+.shimmer-btn--tertiary:hover .shimmer-btn__highlight {
+  box-shadow: inset 0 -6px 10px rgba(124, 92, 252, 0.18);
+}
