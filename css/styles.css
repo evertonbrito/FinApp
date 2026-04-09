@@ -380,7 +380,6 @@ strong { font-weight: 600; }
 
 .feat-card-visual {
   padding: 28px;
-  border-bottom: 1px solid var(--border);
   min-height: 160px;
   display: flex;
   align-items: center;
@@ -415,7 +414,7 @@ strong { font-weight: 600; }
 .ai-tag { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: rgba(126,234,155,0.12); color: var(--accent-mint); border: 1px solid rgba(126,234,155,0.2); }
 
 /* ── Walkthrough ────────────────────────────────────────── */
-.walkthrough { border-top: 1px solid var(--border); }
+.walkthrough { }
 
 .walkthrough-inner {
   display: grid;
@@ -604,7 +603,7 @@ strong { font-weight: 600; }
 .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-mint); animation: pulse-dot 2s ease-in-out infinite; }
 
 /* ── Features Icons Grid ────────────────────────────────── */
-.features-icons { border-top: 1px solid var(--border); }
+.features-icons { }
 
 .icons-grid {
   display: grid;
@@ -640,7 +639,7 @@ strong { font-weight: 600; }
 .icon-item p  { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
 /* ── Pricing ────────────────────────────────────────────── */
-.pricing { border-top: 1px solid var(--border); }
+.pricing { }
 
 .pricing-grid {
   display: grid;
@@ -694,7 +693,7 @@ strong { font-weight: 600; }
 .pricing-features li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-secondary); }
 
 /* ── Testimonial ────────────────────────────────────────── */
-.testimonial { border-top: 1px solid var(--border); }
+.testimonial { }
 
 .testimonial-inner {
   max-width: 720px;
@@ -724,7 +723,7 @@ strong { font-weight: 600; }
 .quote-role { font-size: 13px; color: var(--text-secondary); }
 
 /* ── FAQ ────────────────────────────────────────────────── */
-.faq { border-top: 1px solid var(--border); }
+.faq { }
 
 .faq-inner { max-width: 720px; margin-inline: auto; padding-inline: var(--section-px); }
 .faq-inner .section-header { text-align: left; align-items: flex-start; }
@@ -760,7 +759,6 @@ strong { font-weight: 600; }
 
 /* ── CTA Section ────────────────────────────────────────── */
 .cta-section {
-  border-top: 1px solid var(--border);
   overflow: hidden;
 }
 
@@ -812,7 +810,6 @@ strong { font-weight: 600; }
 
 /* ── Footer ─────────────────────────────────────────────── */
 .footer {
-  border-top: 1px solid var(--border);
   padding-block: 60px 32px;
 }
 
@@ -843,7 +840,6 @@ strong { font-weight: 600; }
   margin-inline: auto;
   padding-inline: var(--section-px);
   padding-top: 24px;
-  border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
