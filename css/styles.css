@@ -334,10 +334,10 @@ strong { font-weight: 600; }
 
 .about-text {
   font-family: var(--font-heading);
-  font-size: clamp(32px, 5vw, 68px);
+  font-size: clamp(48px, 7.5vw, 108px);
   font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.03em;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
 }
 
 /* each word starts dim */
